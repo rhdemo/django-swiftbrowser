@@ -30,18 +30,24 @@ def login(request):
     if form.is_valid():
         username = form.cleaned_data['username']
         password = form.cleaned_data['password']
-        try:
-            auth_version = settings.SWIFT_AUTH_VERSION or 1
-            (storage_url, auth_token) = client.get_auth(
-                settings.SWIFT_AUTH_URL, username, password,
-                auth_version=auth_version)
-            request.session['auth_token'] = auth_token
-            request.session['storage_url'] = storage_url
+        if username == "demo":
+            request.session['auth_token'] = "demo"
+            request.session['storage_url'] = settings.STORAGE_URL
             request.session['username'] = username
             return redirect(containerview)
+        else:
+            try:
+                auth_version = settings.SWIFT_AUTH_VERSION or 1
+                (storage_url, auth_token) = client.get_auth(
+                    settings.SWIFT_AUTH_URL, username, password,
+                    auth_version=auth_version)
+                request.session['auth_token'] = auth_token
+                request.session['storage_url'] = storage_url
+                request.session['username'] = username
+                return redirect(containerview)
 
-        except client.ClientException:
-            messages.add_message(request, messages.ERROR, _("Login failed."))
+            except client.ClientException:
+                messages.add_message(request, messages.ERROR, _("Login failed."))
 
     return render_to_response('login.html', {'form': form, },
                               context_instance=RequestContext(request))
@@ -50,8 +56,8 @@ def login(request):
 def containerview(request):
     """ Returns a list of all containers in current account. """
 
-    storage_url = request.session.get('storage_url', '')
-    auth_token = request.session.get('auth_token', '')
+    storage_url = request.session.get('storage_url', settings.STORAGE_URL)
+    auth_token = request.session.get('auth_token', 'demo')
 
     try:
         account_stat, containers = client.get_account(storage_url, auth_token)
@@ -80,8 +86,8 @@ def containerview(request):
 def create_container(request):
     """ Creates a container (empty object of type application/directory) """
 
-    storage_url = request.session.get('storage_url', '')
-    auth_token = request.session.get('auth_token', '')
+    storage_url = request.session.get('storage_url', settings.STORAGE_URL)
+    auth_token = request.session.get('auth_token', 'demo')
 
     form = CreateContainerForm(request.POST or None)
     if form.is_valid():
@@ -102,8 +108,8 @@ def create_container(request):
 def delete_container(request, container):
     """ Deletes a container """
 
-    storage_url = request.session.get('storage_url', '')
-    auth_token = request.session.get('auth_token', '')
+    storage_url = request.session.get('storage_url', settings.STORAGE_URL)
+    auth_token = request.session.get('auth_token', 'demo')
 
     try:
         _m, objects = client.get_container(storage_url, auth_token, container)
@@ -121,8 +127,8 @@ def delete_container(request, container):
 def objectview(request, container, prefix=None):
     """ Returns list of all objects in current container. """
 
-    storage_url = request.session.get('storage_url', '')
-    auth_token = request.session.get('auth_token', '')
+    storage_url = request.session.get('storage_url', settings.STORAGE_URL)
+    auth_token = request.session.get('auth_token', 'demo')
 
     try:
         meta, objects = client.get_container(storage_url, auth_token,
@@ -160,8 +166,8 @@ def objectview(request, container, prefix=None):
 def upload(request, container, prefix=None):
     """ Display upload form using swift formpost """
 
-    storage_url = request.session.get('storage_url', '')
-    auth_token = request.session.get('auth_token', '')
+    storage_url = request.session.get('storage_url', settings.STORAGE_URL)
+    auth_token = request.session.get('auth_token', 'demo')
 
     redirect_url = get_base_url(request)
     redirect_url += reverse('objectview', kwargs={'container': container, })
@@ -207,8 +213,8 @@ def upload(request, container, prefix=None):
 def download(request, container, objectname):
     """ Download an object from Swift """
 
-    storage_url = request.session.get('storage_url', '')
-    auth_token = request.session.get('auth_token', '')
+    storage_url = request.session.get('storage_url', settings.STORAGE_URL)
+    auth_token = request.session.get('auth_token', 'demo')
     url = swiftbrowser.utils.get_temp_url(storage_url, auth_token,
                                           container, objectname)
     if not url:
@@ -221,8 +227,8 @@ def download(request, container, objectname):
 def delete_object(request, container, objectname):
     """ Deletes an object """
 
-    storage_url = request.session.get('storage_url', '')
-    auth_token = request.session.get('auth_token', '')
+    storage_url = request.session.get('storage_url', settings.STORAGE_URL)
+    auth_token = request.session.get('auth_token', 'demo')
     try:
         client.delete_object(storage_url, auth_token, container, objectname)
         messages.add_message(request, messages.INFO, _("Object deleted."))
@@ -239,8 +245,8 @@ def delete_object(request, container, objectname):
 def toggle_public(request, container):
     """ Sets/unsets '.r:*,.rlistings' container read ACL """
 
-    storage_url = request.session.get('storage_url', '')
-    auth_token = request.session.get('auth_token', '')
+    storage_url = request.session.get('storage_url', settings.STORAGE_URL)
+    auth_token = request.session.get('auth_token', 'demo')
 
     try:
         meta = client.head_container(storage_url, auth_token, container)
@@ -297,8 +303,8 @@ def public_objectview(request, account, container, prefix=None):
 def tempurl(request, container, objectname):
     """ Displays a temporary URL for a given container object """
 
-    storage_url = request.session.get('storage_url', '')
-    auth_token = request.session.get('auth_token', '')
+    storage_url = request.session.get('storage_url', settings.STORAGE_URL)
+    auth_token = request.session.get('auth_token', 'demo')
 
     url = get_temp_url(storage_url, auth_token,
                        container, objectname, 7 * 24 * 3600)
@@ -326,8 +332,8 @@ def tempurl(request, container, objectname):
 
 def create_pseudofolder(request, container, prefix=None):
     """ Creates a pseudofolder (empty object of type application/directory) """
-    storage_url = request.session.get('storage_url', '')
-    auth_token = request.session.get('auth_token', '')
+    storage_url = request.session.get('storage_url', settings.STORAGE_URL)
+    auth_token = request.session.get('auth_token', 'demo')
 
     form = PseudoFolderForm(request.POST)
     if form.is_valid():
@@ -355,9 +361,9 @@ def create_pseudofolder(request, container, prefix=None):
         return redirect(objectview, container=container)
 
     return render_to_response('create_pseudofolder.html', {
-                              'container': container,
-                              'prefix': prefix,
-                              }, context_instance=RequestContext(request))
+        'container': container,
+        'prefix': prefix,
+    }, context_instance=RequestContext(request))
 
 
 def get_acls(storage_url, auth_token, container):
@@ -379,8 +385,8 @@ def remove_duplicates_from_acl(acls):
 def edit_acl(request, container):
     """ Edit ACLs on given container. """
 
-    storage_url = request.session.get('storage_url', '')
-    auth_token = request.session.get('auth_token', '')
+    storage_url = request.session.get('storage_url', settings.STORAGE_URL)
+    auth_token = request.session.get('auth_token', 'demo')
 
     if request.method == 'POST':
         form = AddACLForm(request.POST)
