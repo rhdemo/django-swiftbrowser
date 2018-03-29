@@ -141,6 +141,7 @@ def objectview(request, container, prefix=None):
 
     prefixes = prefix_list(prefix)
     pseudofolders, objs = pseudofolder_object_list(objects, prefix)
+    objs.sort(key=lambda x:x['last_modified'],  reverse=True)
     base_url = get_base_url(request)
     account = storage_url.split('/')[-1]
 
