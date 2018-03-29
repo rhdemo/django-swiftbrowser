@@ -38,6 +38,7 @@ Quick Install
     
     From git clone dir:
     cp ./swiftbrowser/views.py ./swiftbrowser/settings.py /usr/lib/python2.7/site-packages/swiftbrowser/.
+    
     cp ./swiftbrowser/templates/containerview.html ./swiftbrowser/templates/objectview.html /usr/lib/python2.7/site-packages/swiftbrowser/templates/. 
 4) Run development server:
 
