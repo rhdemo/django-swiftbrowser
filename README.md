@@ -37,6 +37,7 @@ Quick Install
 3) Update the settings.py file for your settings. It is located somewhere like: /usr/lib/python2.7/site-packages/swiftbrowser/settings.py
     
     From git clone dir:
+    
     cp ./swiftbrowser/views.py ./swiftbrowser/settings.py /usr/lib/python2.7/site-packages/swiftbrowser/.
     
     cp ./swiftbrowser/templates/containerview.html ./swiftbrowser/templates/objectview.html /usr/lib/python2.7/site-packages/swiftbrowser/templates/. 
