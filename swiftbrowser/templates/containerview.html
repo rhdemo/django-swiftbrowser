@@ -16,7 +16,7 @@
                 <th style="width: 1em;" class="hidden-phone"></th>
                 <th>{% trans 'Name' %}</th>
                 <th style="width: 1em;" class="hidden-phone">{% trans 'Objects' %}</th>
-                <th style="width: 5em;" class="hidden-phone">{% trans 'Size' %}</th>
+<!--
                 <th style="width: 1em;">
 
                 <a href="{% url "create_container" %}" class="btn btn-mini btn-danger">
@@ -24,6 +24,7 @@
                 </a>
 
                 </th>
+-->
             </tr>
         </thead>
         <tbody>
@@ -32,8 +33,8 @@
             <td class="hidden-phone"><i class="icon-inbox"></i></td>
             <td><strong><a href="{% url "objectview" container=container.name %}" class="block">{{container.name}}</a></strong></td>
     	    <td class="hidden-phone">{{container.count}}</td>
-    	    <td class="hidden-phone">{{container.bytes|filesizeformat}}</td>
 
+<!--
             <td>
                 <div class="dropdown pull-right">
                     <a class="dropdown-toggle btn btn-mini btn-danger" data-toggle="dropdown"><i class="icon-chevron-down icon-white"></i></a>
@@ -45,20 +46,21 @@
                         {% endif %}
  
                         <li>
-                            <a href="{% url "delete_container" container=container.name %}" onclick="return confirm('{% trans 'Delete container' %} {{container.name}}?');">
-                                <i class="icon-trash"></i> {% trans 'Delete container' %}
+                            <a href="{% url "delete_container" container=container.name %}" onclick="return confirm('{% trans 'Delete bucket' %} {{container.name}}?');">
+                                <i class="icon-trash"></i> {% trans 'Delete bucket' %}
                             </a>
                         </li>
                     </ul>
                 </div>
             </td>
+-->
 
             </tr> 
 
         {% empty %}
         <tr>
             <td colspan="5">
-            <strong><center>{% trans 'There are no containers in this account yet. Create a new container by clicking the red button.' %}<center></strong>
+            <strong><center>{% trans 'There are no buckets in this account yet. Create a new bucket by clicking the red button.' %}<center></strong>
             </td>
         </tr> 
  
@@ -66,16 +68,6 @@
         </tbody> 
        
         <tfoot>
-            <tr>
-                <th colspan="5" class="center">
-                    {{account_stat.x_account_bytes_used|filesizeformat}} 
-                    {% if account_stat.x_account_meta_quota_bytes %}
-                        {% trans 'of' %}
-                        {{account_stat.x_account_meta_quota_bytes|filesizeformat}} 
-                    {% endif %}
-                    {% trans 'used' %}
-                </th>
-            </tr>
         </tfoot>
         </table>
         </div>

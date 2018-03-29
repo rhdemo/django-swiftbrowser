@@ -20,6 +20,9 @@ Quick Install
    pip install django==1.09
    
    pip install django-swiftbrowser
+   
+   (manual: python setup.py install plus other steps, do the above and then copy files)
+
 
 2) Please make sure that "tempurl" and "formpost" middlewares are activated in your proxy server. Extract from /etc/swift/proxy-server.conf:
 
@@ -32,6 +35,10 @@ Quick Install
     [filter:formpost]
     use = egg:swift#formpost
 3) Update the settings.py file for your settings. It is located somewhere like: /usr/lib/python2.7/site-packages/swiftbrowser/settings.py
+    
+    From git clone dir:
+    cp ./swiftbrowser/views.py ./swiftbrowser/settings.py /usr/lib/python2.7/site-packages/swiftbrowser/.
+    cp ./swiftbrowser/templates/containerview.html ./swiftbrowser/templates/objectview.html /usr/lib/python2.7/site-packages/swiftbrowser/templates/. 
 4) Run development server:
 
     django-admin runserver 0.0.0.0:80 --settings=swiftbrowser.settings
