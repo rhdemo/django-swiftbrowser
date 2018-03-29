@@ -34,6 +34,7 @@ def login(request):
             request.session['auth_token'] = "demo"
             request.session['storage_url'] = settings.STORAGE_URL
             request.session['username'] = username
+            request.session['cloud'] = settings.SWIFT_CLOUD
             return redirect(containerview)
         else:
             try:
@@ -44,6 +45,7 @@ def login(request):
                 request.session['auth_token'] = auth_token
                 request.session['storage_url'] = storage_url
                 request.session['username'] = username
+                request.session['cloud'] = settings.SWIFT_CLOUD
                 return redirect(containerview)
 
             except client.ClientException:
@@ -58,6 +60,7 @@ def containerview(request):
 
     storage_url = request.session.get('storage_url', settings.STORAGE_URL)
     auth_token = request.session.get('auth_token', 'demo')
+    request.session['cloud'] = settings.SWIFT_CLOUD
 
     try:
         account_stat, containers = client.get_account(storage_url, auth_token)
@@ -129,6 +132,7 @@ def objectview(request, container, prefix=None):
 
     storage_url = request.session.get('storage_url', settings.STORAGE_URL)
     auth_token = request.session.get('auth_token', 'demo')
+    request.session['cloud'] = settings.SWIFT_CLOUD
 
     try:
         meta, objects = client.get_container(storage_url, auth_token,
