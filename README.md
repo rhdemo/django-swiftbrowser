@@ -27,13 +27,18 @@ Quick Install
    
    Update the ./swiftbrowser/settings.py file
    
-   python setup.py install
+   pip install django-swiftbrowser
    
-   
-   (alt: pip install django-swiftbrowser plus other steps with copy files)
+2) Update the custom files including the setting ot where swiftbrowser is installed on the system
+    
+    From git clone dir:
+    
+    cp ./swiftbrowser/views.py ./swiftbrowser/settings.py /usr/lib/python2.7/site-packages/swiftbrowser/.
+    
+    cp ./swiftbrowser/templates/containerview.html ./swiftbrowser/templates/base.html ./swiftbrowser/templates/objectview.html /usr/lib/python2.7/site-packages/swiftbrowser/templates/. 
 
 
-2) Please make sure that "tempurl" and "formpost" middlewares are activated in your proxy server. Extract from /etc/swift/proxy-server.conf:
+3) Please make sure that "tempurl" (optional without auth) and "formpost" middlewares are activated in your proxy server. Extract from /etc/swift/proxy-server.conf:
 
     [pipeline:main]
     pipeline = catch_errors gatekeeper healthcheck proxy-logging cache tempurl formpost tempauth proxy-logging proxy-server
@@ -43,13 +48,7 @@ Quick Install
 
     [filter:formpost]
     use = egg:swift#formpost
-3) ONLY IF YOU DID ALT INSTALL: Update the settings.py file for your settings. It is located somewhere like: /usr/lib/python2.7/site-packages/swiftbrowser/settings.py
     
-    From git clone dir:
-    
-    cp ./swiftbrowser/views.py ./swiftbrowser/settings.py /usr/lib/python2.7/site-packages/swiftbrowser/.
-    
-    cp ./swiftbrowser/templates/containerview.html ./swiftbrowser/templates/base.html ./swiftbrowser/templates/objectview.html /usr/lib/python2.7/site-packages/swiftbrowser/templates/. 
 4) Run development server:
 
     django-admin runserver 0.0.0.0:80 --settings=swiftbrowser.settings

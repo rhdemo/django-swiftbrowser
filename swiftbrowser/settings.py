@@ -35,9 +35,14 @@ INSTALLED_APPS = (
 
 #Update values below to correct URL
 SWIFT_HOST='storage-aze1.westeurope.cloudapp.azure.com'
-#SWIFT_HOST='storage-aws1.sysdeseng.com'
+#SWIFT_CLOUD='Azure'
+# #SWIFT_HOST='storage-aws1.sysdeseng.com'
+#SWIFT_CLOUD='AWS'
 #SWIFT_HOST='storage-gce2.summit-gce.sysdeseng.com'
-#SWIFT_HOST='127.0.0.1'
+#SWIFT_CLOUD='Google Cloud'
+# #SWIFT_HOST='127.0.0.1'
+#SWIFT_CLOUD='Local'
+
 SWIFT_PORT='8080'
 SWIFT_AUTH_URL = 'http://' + SWIFT_HOST + ':' + SWIFT_PORT + '/auth/v1.0'
 SWIFT_AUTH_VERSION = 1  # 2 for keystone
