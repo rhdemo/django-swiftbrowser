@@ -1,22 +1,25 @@
-django-swiftbrowser
+django-swiftbrowser for RHDEMO
 ===================
 
 [![Build Status](https://travis-ci.org/cschwede/django-swiftbrowser.png?branch=master)](https://travis-ci.org/cschwede/django-swiftbrowser)
 
 Simple web app build with Django and Twitter Bootstrap to access Openstack Swift.
-
+* If you want to run the real swiftbrowser, please see the real product page
 * No database needed
-* Works with keystone, tempauth & swauth
+* Works with no auth and tempauth
 * Support for public containers. ACL support in the works
 * Minimal interface, usable on your desktop as well as on your smartphone
 * Screenshots anyone? See below!
 
 Quick Install
 -------------
+0) This assumes swift proxy with object server is already install on the server and things like pip are setup
 
 1) Install swiftbrowser:
-
-    pip install django-swiftbrowser
+   
+   pip install django==1.09
+   
+   pip install django-swiftbrowser
 
 2) Please make sure that "tempurl" and "formpost" middlewares are activated in your proxy server. Extract from /etc/swift/proxy-server.conf:
 
@@ -28,12 +31,12 @@ Quick Install
 
     [filter:formpost]
     use = egg:swift#formpost
+3) Update the settings.py file for your settings. It is located somewhere like: /usr/lib/python2.7/site-packages/swiftbrowser/settings.py
+4) Run development server:
 
-3) Run development server:
+    django-admin runserver 0.0.0.0:80 --settings=swiftbrowser.settings
 
-    django-admin runserver --settings=swiftbrowser.settings
-
-4) Open "http://127.0.0.1:8000/" in your browser and use 'account:username' to login (or tenant/project:username if using Keystone).
+5) Open "http://<hostname>/" in your browser and use 'demo' (pw: demo)to login when there is no auth or 'account:username' to login with tempauth .
 
 
 Screenshots

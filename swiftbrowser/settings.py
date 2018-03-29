@@ -32,15 +32,29 @@ INSTALLED_APPS = (
     'swiftbrowser',
 )
 
-SWIFT_AUTH_URL = 'http://127.0.0.1:8080/auth/v1.0'
-SWIFT_AUTH_VERSION = 1  # 2 for keystone
-STORAGE_URL = 'http://127.0.0.1:8080/v1/'
-BASE_URL = 'http://127.0.0.1:8000'  # default if using built-in runserver
-SWAUTH_URL = 'http://127.0.0.1:8080/auth/v2'
+# SWIFT_AUTH_URL = 'http://127.0.0.1:8080/auth/v1.0'
+# SWIFT_AUTH_VERSION = 1  # 2 for keystone
+# STORAGE_URL = 'http://127.0.0.1:8080/v1/'
+# BASE_URL = 'http://127.0.0.1:8000'  # default if using built-in runserver
+# SWAUTH_URL = 'http://127.0.0.1:8080/auth/v2'
+#
+# TIME_ZONE = 'Europe/Berlin'
+# LANGUAGE_CODE = 'de-de'
+# SECRET_KEY = 'DONT_USE_THIS_IN_PRODUCTION'
+# STATIC_URL = "http://cdnjs.cloudflare.com/ajax/libs/"
+#
+# ALLOWED_HOSTS = ['127.0.0.1', 'insert_your_hostname_here']
 
-TIME_ZONE = 'Europe/Berlin'
-LANGUAGE_CODE = 'de-de'
+#Update values below to correct URL
+SWIFT_AUTH_URL = 'http://storage-gce2.summit-gce.sysdeseng.com:8080/auth/v1.0'
+SWIFT_AUTH_VERSION = 1  # 2 for keystone
+STORAGE_URL = 'http://storage-gce2.summit-gce.sysdeseng.com:8080/v1/AUTH_gv0'
+BASE_URL = 'http://storage-gce2.summit-gce.sysdeseng.com:80'  # default if using built-in runserver
+SWAUTH_URL = 'http://storage-gce2.summit-gce.sysdeseng.com:8080/auth/v2'
+
+TIME_ZONE = 'America/Boise'
+LANGUAGE_CODE = 'en-en'
 SECRET_KEY = 'DONT_USE_THIS_IN_PRODUCTION'
 STATIC_URL = "http://cdnjs.cloudflare.com/ajax/libs/"
 
-ALLOWED_HOSTS = ['127.0.0.1', 'insert_your_hostname_here']
+ALLOWED_HOSTS = ['127.0.0.1', '*']
