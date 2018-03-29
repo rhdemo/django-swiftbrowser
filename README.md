@@ -19,7 +19,7 @@ Quick Install
    
    pip install django==1.09
    
-   git clone 
+   git clone https://github.com/rhdemo/django-swiftbrowser.git
    
    cd django-swiftbrowser
    
