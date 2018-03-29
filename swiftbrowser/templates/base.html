@@ -4,7 +4,7 @@
     <div class="navbar navbar-inver navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
-                <a class="brand" href="{% url "containerview" %}">Storage on AWS/GCE/Azure/Local</a>
+                <a class="brand" href="{% url "containerview" %}">Storage on {{settings.SWIFT_CLOUD}}</a>
                     <ul class="nav pull-right">
                     {% if session.username %}
                         <li class="dropdown">
