@@ -35,7 +35,7 @@ Quick Install
     
     cp ./swiftbrowser/views.py ./swiftbrowser/settings.py /usr/lib/python2.7/site-packages/swiftbrowser/.
     
-    cp ./swiftbrowser/templates/containerview.html ./swiftbrowser/templates/base.html ./swiftbrowser/templates/objectview.html /usr/lib/python2.7/site-packages/swiftbrowser/templates/. 
+    cp ./swiftbrowser/templates/containerview.html ./swiftbrowser/templates/core.html ./swiftbrowser/templates/base.html ./swiftbrowser/templates/objectview.html /usr/lib/python2.7/site-packages/swiftbrowser/templates/. 
 
 
 3) Please make sure that "tempurl" (optional without auth) and "formpost" middlewares are activated in your proxy server. Extract from /etc/swift/proxy-server.conf:
