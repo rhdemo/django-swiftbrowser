@@ -53,7 +53,7 @@ Quick Install
 
     django-admin runserver 0.0.0.0:80 --settings=swiftbrowser.settings
 
-5) For more permance, setup a service:
+5) For more performance, setup a service:
 
     `touch /etc/systemd/system/storageui.service`
     
@@ -62,7 +62,8 @@ Quick Install
     `vi /etc/systemd/system/storageui.service`
     
 
-    ```[Unit]
+    ```
+    [Unit]
     Description=Storage UI based off the swiftbrowser for RHSUmmit2018
     After=network.target
     
@@ -76,11 +77,11 @@ Quick Install
     WantedBy=default.target```
 
 
-  `systemctl daemon-reload`
+   `systemctl daemon-reload`
   
-  `systemctl start storageui.service`
+   `systemctl start storageui.service`
   
-  `systemctl enable storageui`
+   `systemctl enable storageui`
 
 
 6) Open "http://<hostname>/" in your browser and use 'demo' (pw: demo)to login when there is no auth or 'account:username' to login with tempauth .
