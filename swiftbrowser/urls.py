@@ -28,7 +28,7 @@ urlpatterns = patterns(
         name="objectview"),
     url(r'^clouds/(?P<container>.+?)/(?P<prefix>(.+)+)?$', clouds,
         name="clouds"),
-    url(r'^cloudview/(?P<container>.+?)/(?P<prefix>(.+)+)?$', cloudview,
+    url(r'^cloudview/(?P<cloud>.+?)/(?P<prefix>(.+)+)?$', cloudview,
         name="cloudview"),
     url(r'^acls/(?P<container>.+?)/$', edit_acl, name="edit_acl"),
 )

@@ -37,12 +37,13 @@
         </tbody> 
        
         <tfoot>
-        <tr>
-            <td><strong><a href="{% url 'cloudview' cloud='aws' %}" class="block">AWS |</a></strong></td>
-            <td><strong><a href="{% url 'cloudview' cloud='gce' %}" class="block">GCE |</a></strong></td>
-            <td><strong><a href="{% url 'cloudview' cloud='azr' %}" class="block">AZR |</a></strong></td>
-            <td><strong><a href="{% url 'cloudview' cloud='lcl' %}" class="block">LCL </a></strong></td>
-        </tr>
+        <tr></tr>
+        <tr><td>Clouds:</td></tr>
+        <tr><td><strong><a href="{% url 'cloudview' cloud='aws' %}" class="block">AWS </a></strong></td></tr>
+        <tr><td><strong><a href="{% url 'cloudview' cloud='gce' %}" class="block">GCE </a></strong></td></tr>
+        <tr><td><strong><a href="{% url 'cloudview' cloud='azr' %}" class="block">AZR </a></strong></td></tr>
+        <tr><td><strong><a href="{% url 'cloudview' cloud='lcl' %}" class="block">LCL </a></strong></td></tr>
+
 
         </tfoot>
         </table>
