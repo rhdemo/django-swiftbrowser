@@ -2,7 +2,7 @@ from django.conf.urls import patterns, url
 from swiftbrowser.views import containerview, objectview, download,\
     delete_object, login, tempurl, upload, create_pseudofolder,\
     create_container, delete_container, public_objectview, toggle_public,\
-    edit_acl
+    edit_acl, clouds, cloudview
 
 urlpatterns = patterns(
     'swiftbrowser.views',
