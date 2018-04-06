@@ -9,14 +9,14 @@
 {% include "messages.html" %}
 
         <ul class="breadcrumb">
-            <li><a href="{% url "containerview" %}">Buckets</a></li>
+            <li><a href="{% url "cloudview" %}">Cloud</a></li>
             <li><span class="divider">/</span>
-                <a class="u" href="{% url "objectview" container=container %}">{{container}}</a></li>
+                <a class="u" href="{% url "cloudview" cloud=cloud %}">{{cloud}}</a></li>
 
             {% for prefix in prefixes %}
                 <li>
                     <span class="divider">/</span>
-                    <a href="{% url "objectview" container=container prefix=prefix.full_name %}">{{prefix.display_name}}</a>
+                    <a href="{% url "cloudview" cloud=cloud prefix=prefix.full_name %}">{{prefix.display_name}}</a>
                 </li>
             {% endfor %}
 

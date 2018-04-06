@@ -36,12 +36,29 @@ INSTALLED_APPS = (
 #Update values below to correct URL
 SWIFT_HOST='storage-aze1.westeurope.cloudapp.azure.com'
 SWIFT_CLOUD='Azure'
+#SWIFT_HOST='storage-aze2.westeurope.cloudapp.azure.com'
+#SWIFT_CLOUD='Azure'
 #SWIFT_HOST='storage-aws1.sysdeseng.com'
 #SWIFT_CLOUD='AWS'
 #SWIFT_HOST='storage-gce2.summit-gce.sysdeseng.com'
 #SWIFT_CLOUD='Google Cloud'
 #SWIFT_HOST='127.0.0.1'
 #SWIFT_CLOUD='Local'
+
+#Buckets for each cloud
+AWS_B1='images_aws1'
+AWS_B2='images_aws2'
+AWS_B3='images_aws3'
+GCE_B1='images_gce1'
+GCE_B2='images_gce2'
+GCE_B3='images_gce3'
+AZR_B1='images_azr1'
+AZR_B2='images_azr2'
+AZR_B3='images_azr3'
+LCL_B1='images_lcl1'
+LCL_B2='images_lcl2'
+LCL_B3='images_lcl3'
+
 
 SWIFT_PORT='8080'
 SWIFT_AUTH_URL = 'http://' + SWIFT_HOST + ':' + SWIFT_PORT + '/auth/v1.0'

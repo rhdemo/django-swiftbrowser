@@ -49,11 +49,41 @@ Quick Install
     [filter:formpost]
     use = egg:swift#formpost
     
-4) Run development server:
+4) For simple testing, run development server:
 
     django-admin runserver 0.0.0.0:80 --settings=swiftbrowser.settings
 
-5) Open "http://<hostname>/" in your browser and use 'demo' (pw: demo)to login when there is no auth or 'account:username' to login with tempauth .
+5) For more permance, setup a service:
+
+    `touch /etc/systemd/system/storageui.service`
+    
+    `chmod 664 /etc/systemd/system/storageui.service`
+    
+    `vi /etc/systemd/system/storageui.service`
+    
+
+    ```[Unit]
+    Description=Storage UI based off the swiftbrowser for RHSUmmit2018
+    After=network.target
+    
+    [Service]
+    ExecStart=/usr/bin/django-admin runserver 0.0.0.0:80 --settings=swiftbrowser.settings
+    Type=simple
+    PIDFile=~/.
+    Restart=always
+    
+    [Install]
+    WantedBy=default.target```
+
+
+  `systemctl daemon-reload`
+  
+  `systemctl start storageui.service`
+  
+  `systemctl enable storageui`
+
+
+6) Open "http://<hostname>/" in your browser and use 'demo' (pw: demo)to login when there is no auth or 'account:username' to login with tempauth .
 
 
 Screenshots

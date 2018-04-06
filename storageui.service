@@ -1,0 +1,19 @@
+#cp storage.service /etc/systemd/system/.
+#chmod 664 /etc/systemd/system/storageui.service
+
+[Unit]
+Description=Storage UI based off the swiftbrowser for RHSUmmit2018
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/django-admin runserver 0.0.0.0:80 --settings=swiftbrowser.settings
+Type=simple
+PIDFile=~/.
+Restart=always
+
+[Install]
+WantedBy=default.target
+
+#systemctl daemon-reload
+#systemctl start storageui.service
+#systemctl enable storageui

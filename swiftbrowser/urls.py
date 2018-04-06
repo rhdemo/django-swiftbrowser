@@ -26,5 +26,9 @@ urlpatterns = patterns(
         name="delete_object"),
     url(r'^objects/(?P<container>.+?)/(?P<prefix>(.+)+)?$', objectview,
         name="objectview"),
+    url(r'^clouds/(?P<container>.+?)/(?P<prefix>(.+)+)?$', clouds,
+        name="clouds"),
+    url(r'^cloudview/(?P<container>.+?)/(?P<prefix>(.+)+)?$', cloudview,
+        name="cloudview"),
     url(r'^acls/(?P<container>.+?)/$', edit_acl, name="edit_acl"),
 )
