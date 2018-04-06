@@ -33,7 +33,7 @@ Quick Install
     
     From git clone dir:
     
-    cp ./swiftbrowser/*.py ./swiftbrowser/settings.py /usr/lib/python2.7/site-packages/swiftbrowser/.
+    cp ./swiftbrowser/*.py  /usr/lib/python2.7/site-packages/swiftbrowser/.
     
     cp ./swiftbrowser/templates/*.html /usr/lib/python2.7/site-packages/swiftbrowser/templates/. 
 
