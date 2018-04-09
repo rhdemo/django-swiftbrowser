@@ -31,7 +31,7 @@ Quick Install
    
 2) Update the custom files including the setting ot where swiftbrowser is installed on the system
     
-    From git clone dir:
+    From git clone dir: (might `unalias cp` to make this work better)
     
     cp ./swiftbrowser/*.py  /usr/lib/python2.7/site-packages/swiftbrowser/.
     
@@ -62,9 +62,9 @@ Quick Install
     `vi /etc/systemd/system/storageui.service`
     
 
-    ```
+    
     [Unit]
-    Description=Storage UI based off the swiftbrowser for RHSUmmit2018
+    Description=Storage UI based off the swiftbrowser for RHSummit2018
     After=network.target
     
     [Service]
@@ -74,7 +74,7 @@ Quick Install
     Restart=always
     
     [Install]
-    WantedBy=default.target```
+    WantedBy=default.target
 
 
    `systemctl daemon-reload`
