@@ -8,6 +8,11 @@
 <div class="container">
 {% include "messages.html" %}
 
+    <ul class="breadcrumb">
+        <li><a href="{% url "containerview" %}">Buckets</a></li>
+        <li><span class="divider">/</span>
+            <a class="u" href="{% url "objectview" container=container %}">{{container}}</a></li>
+
         <ul class="breadcrumb">
             <li><a href="{% url "cloudview" %}">Cloud</a></li>
             <li><span class="divider">/</span>

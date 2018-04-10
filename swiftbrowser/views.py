@@ -207,7 +207,7 @@ def cloudview(request, cloud, prefix=None):
         public = True
 
     return render_to_response("cloudview.html", {
-        'container': bucket1 + ',' + bucket2 + ',' + bucket3,
+        'container': bucket1,
         'cloud': cloud,
         'objects': objs,
         'folders': pseudofolders,
