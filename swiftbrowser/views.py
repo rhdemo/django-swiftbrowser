@@ -83,8 +83,22 @@ def containerview(request):
     return render_to_response('containerview.html', {
         'account_stat': account_stat,
         'containers': containers,
+        'clouds': getCloudObjects(),
         'session': request.session,
     }, context_instance=RequestContext(request))
+
+class CloudObject:
+    def __init__(self, name):
+        self.name = name
+
+def getCloudObjects():
+    clouds = []
+    clouds.append(CloudObject({"Azure"}))
+    clouds.append(CloudObject({"AWS"}))
+    clouds.append(CloudObject({"GCE"}))
+    clouds.append(CloudObject({"Local"}))
+    return clouds
+
 
 
 def create_container(request):

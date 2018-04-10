@@ -34,7 +34,7 @@ INSTALLED_APPS = (
 
 
 #Update values below to correct URL
-SWIFT_HOST='storage-aze1.westeurope.cloudapp.azure.com'
+SWIFT_HOST='azr-storage1.southcentralus.cloudapp.azure.com'
 SWIFT_CLOUD='Azure'
 #SWIFT_HOST='storage-aze2.westeurope.cloudapp.azure.com'
 #SWIFT_CLOUD='Azure'
