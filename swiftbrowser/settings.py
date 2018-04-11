@@ -34,7 +34,7 @@ INSTALLED_APPS = (
 
 
 #Update values below to correct URL
-SWIFT_HOST='azr-storage1.southcentralus.cloudapp.azure.com'
+#SWIFT_HOST='azr-storage1.southcentralus.cloudapp.azure.com'
 SWIFT_CLOUD='Azure'
 #SWIFT_HOST='storage-aze2.westeurope.cloudapp.azure.com'
 #SWIFT_CLOUD='Azure'
@@ -46,24 +46,18 @@ SWIFT_CLOUD='Azure'
 #SWIFT_CLOUD='Local'
 
 #Buckets for each cloud
-AWS_B1='images-aws1'
-AWS_B2='images-aws2'
-AWS_B3='images-aws3'
-GCE_B1='images-gce1'
-GCE_B2='images-gce2'
-GCE_B3='images-gce3'
-AZR_B1='images-azr1'
-AZR_B2='images-azr2'
-AZR_B3='images-azr3'
-LCL_B1='images-lcl1'
-LCL_B2='images-lcl2'
-LCL_B3='images-lcl3'
+AWS_BUCKETS='images-aws1,images-aws2,images-aws3'
+AZURE_BUCKETS='images-azr1,images-azr2,images-azr3'
+GCE_BUCKETS='images-gce1,images-gce2,images-gce3'
+LOCAL_BUCKETS='images-lcl1,images-lcl2,images-lcl3'
+TEST_BUCKETS='test1,test2,test3'
 
-
+SWIFT_VOLUME='gv0'
+SWIFT_HOST='localhost'
 SWIFT_PORT='8080'
 SWIFT_AUTH_URL = 'http://' + SWIFT_HOST + ':' + SWIFT_PORT + '/auth/v1.0'
 SWIFT_AUTH_VERSION = 1  # 2 for keystone
-STORAGE_URL = 'http://' + SWIFT_HOST + ':' + SWIFT_PORT + '/v1/AUTH_gv0'
+STORAGE_URL = 'http://' + SWIFT_HOST + ':' + SWIFT_PORT + '/v1/AUTH_' + SWIFT_VOLUME
 BASE_URL = 'http://' + SWIFT_HOST  # default if using built-in runserver
 
 TIME_ZONE = 'America/Boise'

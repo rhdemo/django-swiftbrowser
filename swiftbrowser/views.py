@@ -168,22 +168,33 @@ def objectview(request, container, prefix=None):
         'public': public},
         context_instance=RequestContext(request))
 
+def cloud_to_bucket(argument):
+    switcher = {
+        "AWS": settings.AWS_BUCKETS,
+        "Azure": settings.AZURE_BUCKETS,
+        "GCE": settings.GCE_BUCKETS,
+        "Local": settings.LOCAL_BUCKETS,
+        "Test": settings.TEST_BUCKETS,
+    }
+    return switcher.get(argument, settings.TEST_BUCKETS)
+
 def cloudview(request, cloud, prefix=None):
     """ Returns list of all objects in a cloud. """
 
     storage_url = request.session.get('storage_url', settings.STORAGE_URL)
     auth_token = request.session.get('auth_token', 'demo')
     request.session['cloud'] = settings.SWIFT_CLOUD
-
-    # go through each container
-    bucket1 = settings.AWS_B1
-    bucket2 = settings.AWS_B2
-    bucket3 = settings.AWS_B3
+    objects = []
+    meta = []
+    buckets = cloud_to_bucket(cloud)
+    arrayOfBuckets = buckets.split(",")
 
     try:
-        meta1, objects1 = client.get_container(storage_url, auth_token, bucket1, delimiter='/', prefix=prefix)
-        meta2, objects2 = client.get_container(storage_url, auth_token, bucket2, delimiter='/', prefix=prefix)
-        meta3, objects3 = client.get_container(storage_url, auth_token, bucket3, delimiter='/', prefix=prefix)
+
+        for bucket in arrayOfBuckets:
+            meta1, objects1 = client.get_container(storage_url, auth_token, bucket, delimiter='/', prefix=prefix)
+            objects.push(objects1)
+            meta.push(meta1)
 
     except client.ClientException:
         messages.add_message(request, messages.ERROR, _("Access denied."))
@@ -191,23 +202,19 @@ def cloudview(request, cloud, prefix=None):
     #merge all buckets
 
     prefixes = prefix_list(prefix)
-    pseudofolders1, objs1 = pseudofolder_object_list(objects1, prefix)
-    pseudofolders2, objs2 = pseudofolder_object_list(objects2, prefix)
-    pseudofolders3, objs3 = pseudofolder_object_list(objects3, prefix)
-    objs = objs1 + objs2 + objs3
-    pseudofolders = pseudofolders1 + pseudofolders2 + pseudofolders3
+    pseudofolders, objs = pseudofolder_object_list(objects, prefix)
     objs.sort(key=lambda x:x['last_modified'],  reverse=True)
     base_url = get_base_url(request)
     account = storage_url.split('/')[-1]
 
-    read_acl = meta1.get('x-container-read', '').split(',') + meta2.get('x-container-read', '').split(',') + meta3.get('x-container-read', '').split(',')
+    read_acl = meta.get('x-container-read', '').split(',')
     public = False
     required_acl = ['.r:*', '.rlistings']
     if [x for x in read_acl if x in required_acl]:
         public = True
 
     return render_to_response("cloudview.html", {
-        'container': bucket1,
+        'container': buckets,
         'cloud': cloud,
         'objects': objs,
         'folders': pseudofolders,

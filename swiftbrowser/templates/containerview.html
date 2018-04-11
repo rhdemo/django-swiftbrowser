@@ -39,7 +39,7 @@
         <tfoot>
         <tr>
             <th style="width: 1em;" class="hidden-phone"></th>
-            <th>{% trans 'Cloud' %}</th>
+            <th>{% trans 'Clouds' %}</th>
         </tr>
         <tr>
             <td class="hidden-phone"><i class="icon-globe"></i></td>
@@ -56,6 +56,10 @@
         <tr>
             <td class="hidden-phone"><i class="icon-globe"></i></td>
             <td><strong><a href="{% url "cloudview" "Local" %}" class="block">Local</a></strong></td>
+        </tr>
+        <tr>
+            <td class="hidden-phone"><i class="icon-globe"></i></td>
+            <td><strong><a href="{% url "cloudview" "Test" %}" class="block">Test</a></strong></td>
         </tr>
 
         </tfoot>
