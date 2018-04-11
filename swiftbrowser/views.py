@@ -19,7 +19,7 @@ from swiftbrowser.forms import CreateContainerForm, PseudoFolderForm, \
     LoginForm, AddACLForm
 from swiftbrowser.utils import replace_hyphens, prefix_list, \
     pseudofolder_object_list, get_temp_key, get_base_url, get_temp_url
-
+from urlparse import urlparse
 import swiftbrowser
 
 
@@ -178,12 +178,20 @@ def cloud_to_bucket(argument):
     }
     return switcher.get(argument, settings.TEST_BUCKETS)
 
+def getcloud(request):
+    url = request.META.get('HTTP_REFERER')
+    o = urlparse(url)
+    cloud = o.netloc
+    print "url: %s" % cloud
+    return cloud
+
+
 def cloudview(request, cloud, prefix=None):
     """ Returns list of all objects in a cloud. """
 
     storage_url = request.session.get('storage_url', settings.STORAGE_URL)
     auth_token = request.session.get('auth_token', 'demo')
-    request.session['cloud'] = settings.SWIFT_CLOUD
+    request.session['cloud'] = getcloud(request)
     objects = []
     read_acl = []
     buckets = cloud_to_bucket(cloud)

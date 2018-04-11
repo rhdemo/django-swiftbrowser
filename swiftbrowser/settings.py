@@ -34,15 +34,9 @@ INSTALLED_APPS = (
 
 
 #Update values below to correct URL
-#SWIFT_HOST='azr-storage1.southcentralus.cloudapp.azure.com'
 SWIFT_CLOUD='Azure'
-#SWIFT_HOST='storage-aze2.westeurope.cloudapp.azure.com'
-#SWIFT_CLOUD='Azure'
-#SWIFT_HOST='storage-aws1.sysdeseng.com'
 #SWIFT_CLOUD='AWS'
-#SWIFT_HOST='storage-gce2.summit-gce.sysdeseng.com'
 #SWIFT_CLOUD='Google Cloud'
-#SWIFT_HOST='127.0.0.1'
 #SWIFT_CLOUD='Local'
 
 #Buckets for each cloud
