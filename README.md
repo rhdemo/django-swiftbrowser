@@ -43,7 +43,7 @@ Quick Install
     
     For simple testing, run development server after stopping service:
     
-    systemctl status storageui
+    systemctl stop storageui
         
     django-admin runserver 0.0.0.0:80 --settings=swiftbrowser.settings
 

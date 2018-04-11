@@ -185,16 +185,16 @@ def cloudview(request, cloud, prefix=None):
     auth_token = request.session.get('auth_token', 'demo')
     request.session['cloud'] = settings.SWIFT_CLOUD
     objects = []
-    meta = []
+    read_acl = []
     buckets = cloud_to_bucket(cloud)
     arrayOfBuckets = buckets.split(",")
 
     try:
 
         for bucket in arrayOfBuckets:
-            meta1, objects1 = client.get_container(storage_url, auth_token, bucket, delimiter='/', prefix=prefix)
-            objects.push(objects1)
-            meta.push(meta1)
+            meta, objects1 = client.get_container(storage_url, auth_token, bucket, delimiter='/', prefix=prefix)
+            objects += objects1
+            read_acl += meta.get('x-container-read', '').split(',')
 
     except client.ClientException:
         messages.add_message(request, messages.ERROR, _("Access denied."))
@@ -206,8 +206,6 @@ def cloudview(request, cloud, prefix=None):
     objs.sort(key=lambda x:x['last_modified'],  reverse=True)
     base_url = get_base_url(request)
     account = storage_url.split('/')[-1]
-
-    read_acl = meta.get('x-container-read', '').split(',')
     public = False
     required_acl = ['.r:*', '.rlistings']
     if [x for x in read_acl if x in required_acl]:
