@@ -180,11 +180,11 @@ def getcloud(request):
 
     o = urlparse(request.META.get('HTTP_REFERER'))
     url = o.netloc
-    if url.contains('azr'):
+    if 'azr' in url:
         cloud = "Azure"
-    elif url.contains('aws'):
+    elif 'aws' in url:
         cloud = "AWS"
-    elif url.contains('gce'):
+    elif 'gce' in url:
         cloud = "Google Cloud"
     else:
         cloud = "Local"
