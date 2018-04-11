@@ -3,43 +3,37 @@
 {% load dateconv %}
 
 {% block content %}
-    <div class="container">
+<div class="container">
     {% include "messages.html" %}
-        <ul class="breadcrumb">
-            <li><a href="{% url "containerview" %}">Buckets</a></li>
-       </ul> 
-    
-        <table class="table table-striped">
-        
-        <thead>
-            <tr>
-                <th style="width: 1em;" class="hidden-phone"></th>
-                <th>{% trans 'Name' %}</th>
-                <th style="width: 1em;" class="hidden-phone">{% trans 'Objects' %}</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for container in containers %}
-            <tr>
-            <td class="hidden-phone"><i class="icon-inbox"></i></td>
-            <td><strong><a href="{% url "objectview" container=container.name %}" class="block">{{container.name}}</a></strong></td>
-    	    <td class="hidden-phone">{{container.count}}</td>
-            </tr>
+    <ul class="breadcrumb">
+        <li><a href="{% url "containerview" %}">Clouds</a></li>
+    </ul>
 
-        {% empty %}
+    <table class="table table-striped">
+        <tbody>
         <tr>
-            <td colspan="5">
-            <strong><center>{% trans 'There are no buckets in this account yet. Create a new bucket by clicking the red button.' %}<center></strong>
-            </td>
-        </tr> 
- 
-        {% endfor %}
-        </tbody> 
-       
-        <tfoot>
-        </tfoot>
-        </table>
-        </div>
-        </div>
-    {% endblock %}
+            <th style="width: 1em;" class="hidden-phone"></th>
+            <th>{% trans 'Cloud' %}</th>
+        </tr>
+        <tr>
+            <td class="hidden-phone"><i class="icon-globe"></i></td>
+            <td><strong><a href="{% url "cloudview" "AWS" %}" class="block">AWS</a></strong></td>
+        </tr>
+        <tr>
+            <td class="hidden-phone"><i class="icon-globe"></i></td>
+            <td><strong><a href="{% url "cloudview" "Azure" %}" class="block">Azure</a></strong></td>
+        </tr>
+        <tr>
+            <td class="hidden-phone"><i class="icon-globe"></i></td>
+            <td><strong><a href="{% url "cloudview" "GCE" %}" class="block">GCE</a></strong></td>
+        </tr>
+        <tr>
+            <td class="hidden-phone"><i class="icon-globe"></i></td>
+            <td><strong><a href="{% url "cloudview" "Local" %}" class="block">Local</a></strong></td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock %}
 

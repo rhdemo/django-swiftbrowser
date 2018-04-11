@@ -70,7 +70,6 @@ Quick Install
     [Service]
     ExecStart=/usr/bin/django-admin runserver 0.0.0.0:80 --settings=swiftbrowser.settings
     Type=simple
-    PIDFile=~/.
     Restart=always
     
     [Install]

@@ -41,19 +41,22 @@
             <th style="width: 1em;" class="hidden-phone"></th>
             <th>{% trans 'Cloud' %}</th>
         </tr>
-        {% for cloud in clouds %}
         <tr>
             <td class="hidden-phone"><i class="icon-globe"></i></td>
-            <td><strong><a href="{% url "cloudview" cloud=cloud.name %}" class="block">{{cloud.name}}</a></strong></td>
+            <td><strong><a href="{% url "cloudview" "AWS" %}" class="block">AWS</a></strong></td>
         </tr>
-
-        {% empty %}
         <tr>
-            <td colspan="2">
-                <strong><center>{% trans 'There are no cloudss in this account yet.' %}</center></strong>
-            </td>
+            <td class="hidden-phone"><i class="icon-globe"></i></td>
+            <td><strong><a href="{% url "cloudview" "Azure" %}" class="block">Azure</a></strong></td>
         </tr>
-
+        <tr>
+            <td class="hidden-phone"><i class="icon-globe"></i></td>
+            <td><strong><a href="{% url "cloudview" "GCE" %}" class="block">GCE</a></strong></td>
+        </tr>
+        <tr>
+            <td class="hidden-phone"><i class="icon-globe"></i></td>
+            <td><strong><a href="{% url "cloudview" "Local" %}" class="block">Local</a></strong></td>
+        </tr>
 
         </tfoot>
         </table>

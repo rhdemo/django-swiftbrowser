@@ -83,22 +83,8 @@ def containerview(request):
     return render_to_response('containerview.html', {
         'account_stat': account_stat,
         'containers': containers,
-        'clouds': getCloudObjects(),
         'session': request.session,
     }, context_instance=RequestContext(request))
-
-class CloudObject:
-    def __init__(self, name):
-        self.name = name
-
-def getCloudObjects():
-    clouds = []
-    clouds.append(CloudObject({"Azure"}))
-    clouds.append(CloudObject({"AWS"}))
-    clouds.append(CloudObject({"GCE"}))
-    clouds.append(CloudObject({"Local"}))
-    return clouds
-
 
 
 def create_container(request):
@@ -240,11 +226,7 @@ def clouds(request, cloud, prefix=None):
     auth_token = request.session.get('auth_token', 'demo')
     request.session['cloud'] = settings.SWIFT_CLOUD
 
-
-    return render_to_response("clouds.html", {
-        'cloud': cloud,
-        'session': request.session,
-        'prefix': prefix},
+    return render_to_response("clouds.html", {},
         context_instance=RequestContext(request))
 
 

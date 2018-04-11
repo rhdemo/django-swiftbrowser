@@ -7,6 +7,7 @@ from swiftbrowser.views import containerview, objectview, download,\
 urlpatterns = patterns(
     'swiftbrowser.views',
     url(r'^login/$', login, name="login"),
+    url(r'^clouds/$', clouds, name="clouds"),
     url(r'^$', containerview, name="containerview"),
     url(r'^public/(?P<account>.+?)/(?P<container>.+?)/(?P<prefix>(.+)+)?$',
         public_objectview, name="public_objectview"),
@@ -26,8 +27,6 @@ urlpatterns = patterns(
         name="delete_object"),
     url(r'^objects/(?P<container>.+?)/(?P<prefix>(.+)+)?$', objectview,
         name="objectview"),
-    url(r'^clouds/(?P<container>.+?)/(?P<prefix>(.+)+)?$', clouds,
-        name="clouds"),
     url(r'^cloudview/(?P<cloud>.+?)/(?P<prefix>(.+)+)?$', cloudview,
         name="cloudview"),
     url(r'^acls/(?P<container>.+?)/$', edit_acl, name="edit_acl"),
