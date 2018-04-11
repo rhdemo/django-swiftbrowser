@@ -197,8 +197,8 @@ def cloudview(request, cloud, prefix=None):
             read_acl += meta.get('x-container-read', '').split(',')
 
     except client.ClientException:
-        messages.add_message(request, messages.ERROR, _("Access denied."))
-        return redirect(cloudview)
+        messages.add_message(request, messages.ERROR, _("Cloud Buckets do not exist."))
+        return redirect(containerview)
     #merge all buckets
 
     prefixes = prefix_list(prefix)
