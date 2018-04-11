@@ -26,7 +26,7 @@ import swiftbrowser
 def login(request):
     """ Tries to login user and sets session data """
     request.session.flush()
-    request.session['cloud'] = settings.SWIFT_CLOUD
+    request.session['cloud'] = getcloud(request)
     form = LoginForm(request.POST or None)
     if form.is_valid():
         username = form.cleaned_data['username']
@@ -35,7 +35,6 @@ def login(request):
             request.session['auth_token'] = "demo"
             request.session['storage_url'] = settings.STORAGE_URL
             request.session['username'] = username
-            request.session['cloud'] = settings.SWIFT_CLOUD
             return redirect(containerview)
         else:
             try:
@@ -46,7 +45,6 @@ def login(request):
                 request.session['auth_token'] = auth_token
                 request.session['storage_url'] = storage_url
                 request.session['username'] = username
-                request.session['cloud'] = settings.SWIFT_CLOUD
                 return redirect(containerview)
 
             except client.ClientException:
@@ -61,7 +59,7 @@ def containerview(request):
 
     storage_url = request.session.get('storage_url', settings.STORAGE_URL)
     auth_token = request.session.get('auth_token', 'demo')
-    request.session['cloud'] = settings.SWIFT_CLOUD
+    request.session['cloud'] = getcloud(request)
 
     try:
         account_stat, containers = client.get_account(storage_url, auth_token)
@@ -133,7 +131,7 @@ def objectview(request, container, prefix=None):
 
     storage_url = request.session.get('storage_url', settings.STORAGE_URL)
     auth_token = request.session.get('auth_token', 'demo')
-    request.session['cloud'] = settings.SWIFT_CLOUD
+    request.session['cloud'] = getcloud(request)
 
     try:
         meta, objects = client.get_container(storage_url, auth_token,
@@ -179,10 +177,17 @@ def cloud_to_bucket(argument):
     return switcher.get(argument, settings.TEST_BUCKETS)
 
 def getcloud(request):
-    url = request.META.get('HTTP_REFERER')
-    o = urlparse(url)
-    cloud = o.netloc
-    print "url: %s" % cloud
+
+    o = urlparse(request.META.get('HTTP_REFERER'))
+    url = o.netloc
+    if url.contains('azr'):
+        cloud = "Azure"
+    elif url.contains('aws'):
+        cloud = "AWS"
+    elif url.contains('gce'):
+        cloud = "Google Cloud"
+    else:
+        cloud = "Local"
     return cloud
 
 
@@ -237,7 +242,7 @@ def clouds(request, cloud, prefix=None):
 
     storage_url = request.session.get('storage_url', settings.STORAGE_URL)
     auth_token = request.session.get('auth_token', 'demo')
-    request.session['cloud'] = settings.SWIFT_CLOUD
+    request.session['cloud'] = getcloud(request)
 
     return render_to_response("clouds.html", {},
         context_instance=RequestContext(request))
