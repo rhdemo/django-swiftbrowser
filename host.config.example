@@ -4,6 +4,6 @@ SWIFT_HOST=storage-aws1.sysdeseng.com
 #SWIFT_HOST=azr-storage1.southcentralus.cloudapp.azure.com
 #SWIFT_HOST=storage-gce1.summit-gce.sysdeseng.com
 
-SWIFT_VOLUME='gv0'
-#SWIFT_VOLUME='gv1'
+SWIFT_VOLUME=gv0
+#SWIFT_VOLUME=gv1
 
