@@ -75,12 +75,12 @@ def containerview(request):
             msg += '%s/objects/containername</a>' % base_url
             messages.add_message(request, messages.ERROR, msg)
         elif exc.http_status == 302:
-            msg = 'Bucket listing failed with 302. Perhaps the volume is not set? '
+            msg = 'Bucket listing failed with 302. \n '
             msg += exc.msg
             messages.add_message(request, messages.ERROR, msg)
         else:
             msg = 'Bucket listing failed with %s. ' % exc.http_status
-            msg += 'A 500 error could mean proxy not running '
+            msg += 'A 503 error could mean volume is not set.\n '
             msg += exc.msg
             messages.add_message(request, messages.ERROR, msg)
             return redirect(login)
