@@ -178,11 +178,10 @@ def cloud_to_bucket(argument):
 
 def getcloud(request):
 
-    o = urlparse(request.META.get('HTTP_REFERER'))
-    url = o.netloc
+    url = os.environ['HOSTNAME']
     if 'azr' in url:
         cloud = "Azure"
-    elif 'aws' in url:
+    elif 'ec2' in url:
         cloud = "AWS"
     elif 'gce' in url:
         cloud = "Google Cloud"
