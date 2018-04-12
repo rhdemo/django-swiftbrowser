@@ -20,7 +20,7 @@ from swiftbrowser.forms import CreateContainerForm, PseudoFolderForm, \
     LoginForm, AddACLForm
 from swiftbrowser.utils import replace_hyphens, prefix_list, \
     pseudofolder_object_list, get_temp_key, get_base_url, get_temp_url
-from urlparse import urlparse
+
 import swiftbrowser
 
 
@@ -74,7 +74,15 @@ def containerview(request):
             msg += '<a href="%s/objects/containername">' % base_url
             msg += '%s/objects/containername</a>' % base_url
             messages.add_message(request, messages.ERROR, msg)
+        elif exc.http_status == 302:
+            msg = 'Bucket listing failed with 302. Perhaps the volume is not set? '
+            msg += exc.msg
+            messages.add_message(request, messages.ERROR, msg)
         else:
+            msg = 'Bucket listing failed with %s. ' % exc.http_status
+            msg += 'A 500 error could mean proxy not running '
+            msg += exc.msg
+            messages.add_message(request, messages.ERROR, msg)
             return redirect(login)
 
     account_stat = replace_hyphens(account_stat)
