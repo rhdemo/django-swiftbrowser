@@ -3,6 +3,7 @@
 import os
 import time
 import urlparse
+import socket
 import hmac
 from hashlib import sha1
 
@@ -178,10 +179,12 @@ def cloud_to_bucket(argument):
 
 def getcloud(request):
 
-    url = os.environ['HOSTNAME']
+    url = socket.gethostname()
     if 'azr' in url:
         cloud = "Azure"
     elif 'ec2' in url:
+        cloud = "AWS"
+    elif 'aws' in url:
         cloud = "AWS"
     elif 'gce' in url:
         cloud = "Google Cloud"
