@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, url
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf import settings
 from swiftbrowser.views import containerview, objectview, download,\
     delete_object, login, tempurl, upload, create_pseudofolder,\
     create_container, delete_container, public_objectview, toggle_public,\
@@ -32,4 +33,4 @@ urlpatterns = patterns(
         name="cloudview"),
     url(r'^acls/(?P<container>.+?)/$', edit_acl, name="edit_acl"),
 )
-urlpatterns += staticfiles_urlpatterns()
+urlpatterns += patterns('django.views.static',(r'^static/(?P<path>.*)','serve',{'document_root':settings.STATIC_ROOT}), )

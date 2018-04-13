@@ -66,4 +66,5 @@ STATICILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',)
 STATIC_URL = '/static/'
-STATIC_ROOT = ''
+STATIC_ROOT = '/usr/lib/python2.7/site-packages/swiftbrowser/media/'
+
