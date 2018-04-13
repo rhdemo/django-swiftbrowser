@@ -231,6 +231,7 @@ def cloudview(request, cloud, prefix=None):
     prefixes = prefix_list(prefix)
     pseudofolders, objs = pseudofolder_object_list(objects, prefix)
     objs.sort(key=lambda x:x['last_modified'],  reverse=True)
+    del objs[100:]
     base_url = get_base_url(request)
     account = storage_url.split('/')[-1]
     public = False
