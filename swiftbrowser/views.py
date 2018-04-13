@@ -214,8 +214,12 @@ def cloudview(request, cloud, prefix=None):
 
     try:
 
+        newkey = u"{key}".format(key='bucket')
         for bucket in arrayOfBuckets:
             meta, objects1 = client.get_container(storage_url, auth_token, bucket, delimiter='/', prefix=prefix)
+            for entry in objects1:
+                value = u"{value}".format( value=bucket)
+                entry.update({newkey:value})
             objects += objects1
             read_acl += meta.get('x-container-read', '').split(',')
 

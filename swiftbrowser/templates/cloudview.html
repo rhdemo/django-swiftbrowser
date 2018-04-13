@@ -28,7 +28,7 @@
         {% for key in objects %}
             <tr>
                 <td class="hidden-phone"><i class="icon-file"></i></td>
-                <td><a href="{% url "download" container=container objectname=key.name %}" class="block">{{key.name|lastpart}}</a></td>
+                <td><a href="{% url "download" container=key.bucket objectname=key.name %}" class="block">{{key.name|lastpart}}</a></td>
                 <td class="hidden-phone">{{key.last_modified|dateconv|date:"SHORT_DATETIME_FORMAT"}}</td>
             </tr>
 

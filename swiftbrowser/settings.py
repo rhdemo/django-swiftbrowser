@@ -40,10 +40,10 @@ SWIFT_CLOUD='Azure'
 #SWIFT_CLOUD='Local'
 
 #Buckets for each cloud
-AWS_BUCKETS='images-aws1,images-aws2,images-aws3'
-AZURE_BUCKETS='images-azr1,images-azr2,images-azr3'
-GCE_BUCKETS='images-gce1,images-gce2,images-gce3'
-LOCAL_BUCKETS='images-lcl1,images-lcl2,images-lcl3'
+AWS_BUCKETS='bucket1,bucket2,bucket3'
+AZURE_BUCKETS='bucket7,bucket8,bucket9'
+GCE_BUCKETS='bucket4,bucket5,bucket6'
+LOCAL_BUCKETS='bucket10,bucket11,bucket12'
 TEST_BUCKETS='test1,test2,test3'
 
 SWIFT_VOLUME='gv0'

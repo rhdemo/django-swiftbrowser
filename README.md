@@ -21,8 +21,6 @@ Quick Install
    
    cd django-swiftbrowser
    
-   chmod +x ./install.sh
-   
    ./install.sh
    
 
