@@ -51,7 +51,7 @@ def login(request):
             except client.ClientException:
                 messages.add_message(request, messages.ERROR, _("Login failed."))
 
-    return render_to_response('login.html', {'form': form, 'server': {settings.SWIFT_HOST},},
+    return render_to_response('login.html', {'form': form, 'server': settings.SWIFT_HOST,'volume': settings.SWIFT_VOLUME,},
                               context_instance=RequestContext(request))
 
 

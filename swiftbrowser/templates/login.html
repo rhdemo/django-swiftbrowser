@@ -34,7 +34,7 @@
 {% block content %}
 <form method="post" action="{% url "login" %}">
     {% csrf_token %}
-    <div class="modal-header"><h3>Login</h3></div>
+    <div class="modal-header"><h3>Server Name: {{server}} Volume: {{volume}}</h3><h3>Login</h3></div>
     <div class="modal-body">
         {% if messages %}
             {% for message in messages %}
@@ -56,8 +56,6 @@
         <button type="submit" class="btn btn-primary">{% trans 'Login' %} <span class="icon-chevron-right icon-white"></span></button>
     </div>
 </form>
-Here is some basic info about this server<br/>
-Server Name: {{server}}
 
 {% endblock %}
 
