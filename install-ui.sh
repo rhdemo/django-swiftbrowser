@@ -10,6 +10,7 @@ then
     unalias cp
     cp ./swiftbrowser/*.py /usr/lib/python2.7/site-packages/swiftbrowser/.
     cp ./swiftbrowser/templates/*.html /usr/lib/python2.7/site-packages/swiftbrowser/templates/.
+    cp -r ./swiftbrowser/static/ /usr/lib/python2.7/site-packages/swiftbrowser/.
     sed -i '50s/.*/SWIFT_HOST="'$SWIFT_HOST'"/' /usr/lib/python2.7/site-packages/swiftbrowser/settings.py
     sed -i '49s/.*/SWIFT_VOLUME="'$SWIFT_VOLUME'"/' /usr/lib/python2.7/site-packages/swiftbrowser/settings.py
     cp storageui.service /etc/systemd/system/.

@@ -57,6 +57,12 @@ BASE_URL = 'http://' + SWIFT_HOST  # default if using built-in runserver
 TIME_ZONE = 'America/Boise'
 LANGUAGE_CODE = 'en-en'
 SECRET_KEY = 'DONT_USE_THIS_IN_PRODUCTION'
-STATIC_URL = "http://cdnjs.cloudflare.com/ajax/libs/"
 
 ALLOWED_HOSTS = ['127.0.0.1', '*']
+
+STATICFILES_DIRS = (os.path.join( os.path.dirname( __file__ ), 'static' ),)
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',)
+STATIC_URL = '/static/'
+STATIC_ROOT = ''
