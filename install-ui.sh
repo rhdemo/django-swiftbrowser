@@ -18,6 +18,7 @@ then
     systemctl daemon-reload
     systemctl start storageui.service
     systemctl enable storageui
+    export UI=/usr/lib/python2.7/site-packages/swiftbrowser/
 
 else
     echo "Host config file does not exist.  Please: cp host.config.example host.config; vi host.config and set the host name."
