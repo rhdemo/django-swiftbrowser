@@ -177,10 +177,11 @@ def objectview(request, container, prefix=None):
 
 def cloud_to_bucket(argument):
     switcher = {
+        "All": settings.AWS_BUCKETS + settings.AZURE_BUCKETS + settings.GCE_BUCKETS,
         "AWS": settings.AWS_BUCKETS,
         "Azure": settings.AZURE_BUCKETS,
         "GCE": settings.GCE_BUCKETS,
-        "Local": settings.LOCAL_BUCKETS,
+        "Private": settings.PRIVATE_BUCKETS,
         "Test": settings.TEST_BUCKETS,
     }
     return switcher.get(argument, settings.TEST_BUCKETS)
@@ -197,7 +198,7 @@ def getcloud(request):
     elif 'gce' in url:
         cloud = "Google Cloud"
     else:
-        cloud = "Local"
+        cloud = "Private"
     return cloud
 
 

@@ -43,7 +43,7 @@ SWIFT_CLOUD='Azure'
 AWS_BUCKETS='bucket1,bucket2,bucket3'
 AZURE_BUCKETS='bucket7,bucket8,bucket9'
 GCE_BUCKETS='bucket4,bucket5,bucket6'
-LOCAL_BUCKETS='bucket10,bucket11,bucket12'
+PRIVATE_BUCKETS='bucket10,bucket11,bucket12'
 TEST_BUCKETS='test1,test2,test3'
 
 SWIFT_VOLUME='gv0'
@@ -66,5 +66,5 @@ STATICILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',)
 STATIC_URL = '/static/'
-STATIC_ROOT = '/usr/lib/python2.7/site-packages/swiftbrowser/media/'
+STATIC_ROOT = '/usr/lib/python2.7/site-packages/swiftbrowser/static/'
 
