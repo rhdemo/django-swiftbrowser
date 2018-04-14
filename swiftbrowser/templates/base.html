@@ -11,7 +11,7 @@
                 {% elif session.cloud == "Azure" %}
                     <a class="brand" href="{% url "containerview" %}"><img src="{{STATIC_URL}}images/azure.png" style="height:42px;">{{session.cloud}} Storage</a>
                 {% else %}
-                    <a class="brand" href="{% url "containerview" %}"><img src="{{STATIC_URL}}images/rh.png" style="height:42px;">{{session.cloud}} Storage</a>
+                    <a class="brand" href="{% url "containerview" %}"><img src="{{STATIC_URL}}images/rh.jpeg" style="height:42px;">{{session.cloud}} Storage</a>
                 {% endif %}
                 <ul class="nav pull-right">
                     {% if session.username %}
