@@ -213,10 +213,9 @@ def cloudview(request, cloud, prefix=None):
     buckets = cloud_to_bucket(cloud)
     arrayOfBuckets = buckets.split(",")
 
-    try:
-
-        newkey = u"{key}".format(key='bucket')
-        for bucket in arrayOfBuckets:
+    newkey = u"{key}".format(key='bucket')
+    for bucket in arrayOfBuckets:
+        try:
             meta, objects1 = client.get_container(storage_url, auth_token, bucket, delimiter='/', prefix=prefix)
             for entry in objects1:
                 value = u"{value}".format( value=bucket)
@@ -224,9 +223,9 @@ def cloudview(request, cloud, prefix=None):
             objects += objects1
             read_acl += meta.get('x-container-read', '').split(',')
 
-    except client.ClientException:
-        messages.add_message(request, messages.ERROR, _("Cloud Buckets do not exist."))
-        return redirect(containerview)
+        except client.ClientException:
+            messages.add_message(request, messages.ERROR, _("No Access to Bucket %s." % bucket))
+
     #merge all buckets
 
     prefixes = prefix_list(prefix)
