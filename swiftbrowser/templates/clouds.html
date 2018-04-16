@@ -5,31 +5,12 @@
 {% block content %}
 <div class="container">
     {% include "messages.html" %}
-    <ul class="breadcrumb">
-        <li><a href="{% url "containerview" %}">Clouds</a></li>
-    </ul>
-
     <table class="table table-striped">
         <tbody>
         <tr>
-            <th style="width: 1em;" class="hidden-phone"></th>
-            <th>{% trans 'Cloud' %}</th>
-        </tr>
-        <tr>
-            <td class="hidden-phone"><i class="icon-globe"></i></td>
-            <td><strong><a href="{% url "cloudview" "AWS" %}" class="block">AWS</a></strong></td>
-        </tr>
-        <tr>
-            <td class="hidden-phone"><i class="icon-globe"></i></td>
-            <td><strong><a href="{% url "cloudview" "Azure" %}" class="block">Azure</a></strong></td>
-        </tr>
-        <tr>
-            <td class="hidden-phone"><i class="icon-globe"></i></td>
-            <td><strong><a href="{% url "cloudview" "GCE" %}" class="block">GCE</a></strong></td>
-        </tr>
-        <tr>
-            <td class="hidden-phone"><i class="icon-globe"></i></td>
-            <td><strong><a href="{% url "cloudview" "Local" %}" class="block">Local</a></strong></td>
+            <td colspan="3">
+                <strong><a href="{% url "cloudview" "All" %}" class="block"><img src="{{STATIC_URL}}images/cloud-view.png" style="height:280px;"></a></strong>
+            </td>
         </tr>
 
         </tbody>

@@ -259,7 +259,7 @@ def clouds(request, cloud, prefix=None):
     auth_token = request.session.get('auth_token', 'demo')
     request.session['cloud'] = getcloud(request)
 
-    return render_to_response("clouds.html", {},
+    return render_to_response("clouds.html", {'session': request.session,},
         context_instance=RequestContext(request))
 
 
