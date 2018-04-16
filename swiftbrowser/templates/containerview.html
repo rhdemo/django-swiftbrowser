@@ -21,7 +21,7 @@
         <tbody>
         {% for container in containers %}
             <tr>
-            <td class="hidden-phone"><img src="{{STATIC_URL}}images/blue-bucket-trans.png" style="height:12px;"></td>
+            <td class="hidden-phone"><img src="{{STATIC_URL}}images/blue-bucket-trans.png" style="height:22px;"></td>
             <td><strong><a href="{% url "objectview" container=container.name %}" class="block">{{container.name}}</a></strong></td>
     	    <td class="hidden-phone">{{container.count}}</td>
             </tr>
