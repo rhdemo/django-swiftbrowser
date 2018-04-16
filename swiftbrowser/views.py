@@ -252,11 +252,11 @@ def cloudview(request, cloud, prefix=None):
         'public': public},
         context_instance=RequestContext(request))
 
-def clouds(request, cloud, prefix=None):
+def clouds(request):
     """ Shows the 4 possible clouds - AWS, GCE, AZR, Local """
 
-    storage_url = request.session.get('storage_url', settings.STORAGE_URL)
-    auth_token = request.session.get('auth_token', 'demo')
+    # storage_url = request.session.get('storage_url', settings.STORAGE_URL)
+    # auth_token = request.session.get('auth_token', 'demo')
     request.session['cloud'] = getcloud(request)
 
     return render_to_response("clouds.html", {'session': request.session,},

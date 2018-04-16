@@ -3,18 +3,18 @@
 {% load dateconv %}
 
 {% block content %}
-<div class="container">
-    {% include "messages.html" %}
-    <table class="table table-striped">
-        <tbody>
-        <tr>
-            <td colspan="3">
-                <strong><a href="{% url "cloudview" "All" %}" class="block"><img src="{{STATIC_URL}}images/cloud-view.png" style="height:280px;"></a></strong>
-            </td>
-        </tr>
+    <div class="container">
+        {% include "messages.html" %}
+        <table class="table table-striped">
+            <tbody>
+            <tr>
+                <td colspan="3">
+                    <strong><a href="{% url "cloudview" "All" %}" class="block"><img src="{{STATIC_URL}}images/cloud-view.png" style="height:280px;"></a></strong>
+                </td>
+            </tr>
 
-        </tbody>
-    </table>
-</div>
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
 
