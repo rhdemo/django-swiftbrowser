@@ -28,45 +28,20 @@
 
         {% empty %}
         <tr>
-            <td colspan="5">
+            <td colspan="3">
             <strong><center>{% trans 'There are no buckets in this account yet. Create a new bucket by clicking the red button.' %}<center></strong>
             </td>
         </tr> 
  
         {% endfor %}
-        </tbody> 
-       
-        <tfoot>
         <tr>
-            <th style="width: 1em;" class="hidden-phone"></th>
-            <th>{% trans 'Clouds' %}</th>
-        </tr>
-        <tr>
-            <td class="hidden-phone"><i class="icon-globe"></i></td>
-            <td><strong><a href="{% url "cloudview" "All" %}" class="block">All</a></strong></td>
-        </tr>
-        <tr>
-            <td class="hidden-phone"><i class="icon-globe"></i></td>
-            <td><strong><a href="{% url "cloudview" "AWS" %}" class="block">AWS</a></strong></td>
-        </tr>
-        <tr>
-            <td class="hidden-phone"><i class="icon-globe"></i></td>
-            <td><strong><a href="{% url "cloudview" "Azure" %}" class="block">Azure</a></strong></td>
-        </tr>
-        <tr>
-            <td class="hidden-phone"><i class="icon-globe"></i></td>
-            <td><strong><a href="{% url "cloudview" "GCE" %}" class="block">GCE</a></strong></td>
-        </tr>
-        <tr>
-            <td class="hidden-phone"><i class="icon-globe"></i></td>
-            <td><strong><a href="{% url "cloudview" "Private" %}" class="block">Private</a></strong></td>
-        </tr>
-        <tr>
-            <td class="hidden-phone"><i class="icon-globe"></i></td>
-            <td><strong><a href="{% url "cloudview" "Test" %}" class="block">Test</a></strong></td>
+            <td colspan="3">
+                <strong><a href="{% url "cloudview" "All" %}" class="block"><img src="{{STATIC_URL}}images/cloud-view.png" style="height:120px;"></a></strong>
+            </td>
         </tr>
 
-        </tfoot>
+        </tbody>
+
         </table>
         </div>
         </div>
