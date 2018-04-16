@@ -5,13 +5,13 @@
         <div class="navbar-inner">
             <div class="container">
                 {% if session.cloud == "AWS" %}
-                    <a class="brand" href="{% url "containerview" %}"><img src="{{STATIC_URL}}images/aws.png" style="height:42px;">{{session.cloud}} Storage</a>
+                    <a class="brand" href="{% url "containerview" %}"><img src="{{STATIC_URL}}images/aws.png" style="height:42px;">Red Hat CNS on {{session.cloud}}</a>
                 {% elif session.cloud == "Google Cloud" %}
-                    <a class="brand" href="{% url "containerview" %}"><img src="{{STATIC_URL}}images/googlecloud.png" style="height:42px;">{{session.cloud}} Storage</a>
+                    <a class="brand" href="{% url "containerview" %}"><img src="{{STATIC_URL}}images/googlecloud.png" style="height:42px;">Red Hat CNS on {{session.cloud}}</a>
                 {% elif session.cloud == "Azure" %}
-                    <a class="brand" href="{% url "containerview" %}"><img src="{{STATIC_URL}}images/azure.png" style="height:42px;">{{session.cloud}} Storage</a>
+                    <a class="brand" href="{% url "containerview" %}"><img src="{{STATIC_URL}}images/azure.png" style="height:42px;">Red Hat CNS on {{session.cloud}}</a>
                 {% else %}
-                    <a class="brand" href="{% url "containerview" %}"><img src="{{STATIC_URL}}images/rh.jpeg" style="height:42px;">{{session.cloud}} Storage</a>
+                    <a class="brand" href="{% url "containerview" %}"><img src="{{STATIC_URL}}images/rh.jpeg" style="height:42px;">Red Hat CNS on {{session.cloud}} Cloud</a>
                 {% endif %}
                 <ul class="nav pull-right">
                     {% if session.username %}
