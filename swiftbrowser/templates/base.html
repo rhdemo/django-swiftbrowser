@@ -6,7 +6,7 @@
             <div class="container">
                 {% if session.cloud == "AWS" %}
                     <a class="brand" href="{% url "containerview" %}"><img src="{{STATIC_URL}}images/aws.png" style="height:42px;">{{session.cloud}} Storage</a>
-                {% elif session.cloud == "GCE" %}
+                {% elif session.cloud == "Google Cloud" %}
                     <a class="brand" href="{% url "containerview" %}"><img src="{{STATIC_URL}}images/googlecloud.png" style="height:42px;">{{session.cloud}} Storage</a>
                 {% elif session.cloud == "Azure" %}
                     <a class="brand" href="{% url "containerview" %}"><img src="{{STATIC_URL}}images/azure.png" style="height:42px;">{{session.cloud}} Storage</a>
