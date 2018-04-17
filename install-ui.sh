@@ -4,10 +4,10 @@ if [ -e host.config ]
 then
 
     source host.config
-
     pip install django==1.09
     pip install django-swiftbrowser
-    unalias cp
+    alias cp=cp
+#    unalias cp
     cp ./swiftbrowser/*.py /usr/lib/python2.7/site-packages/swiftbrowser/.
     cp ./swiftbrowser/templates/*.html /usr/lib/python2.7/site-packages/swiftbrowser/templates/.
     cp -r ./swiftbrowser/static/ /usr/lib/python2.7/site-packages/swiftbrowser/.
