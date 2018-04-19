@@ -7,11 +7,11 @@
                 {% if session.cloud == "AWS" %}
                     <a class="brand" href="{% url "containerview" %}"><img src="{{STATIC_URL}}images/aws-trans.png" style="height:42px;"> {{session.cloud}} with Red Hat Container Native Storage</a>
                 {% elif session.cloud == "Google Cloud" %}
-                    <a class="brand" href="{% url "containerview" %}"><img src="{{STATIC_URL}}images/gcp-trans.png" style="height:42px;"> {{session.cloud}} with Red Hat Container Native Storage</a>
+                    <a class="brand" href="{% url "containerview" %}"><img src="{{STATIC_URL}}images/osp-trans.png" style="height:42px;"> {{session.cloud}} with Red Hat Container Native Storage</a>
                 {% elif session.cloud == "Azure" %}
                     <a class="brand" href="{% url "containerview" %}"><img src="{{STATIC_URL}}images/azure-trans.png" style="height:42px;"> {{session.cloud}} with Red Hat Container Native Storage</a>
                 {% else %}
-                    <a class="brand" href="{% url "containerview" %}"><img src="{{STATIC_URL}}images/rh-trans.png" style="height:42px;"> {{session.cloud}} Cloud with Red Hat Container Native Storage</a>
+                    <a class="brand" href="{% url "containerview" %}"><img src="{{STATIC_URL}}images/osp-trans.png" style="height:42px;"> {{session.cloud}} Cloud with Red Hat Container Native Storage</a>
                 {% endif %}
                 <ul class="nav pull-right">
                     {% if session.username %}

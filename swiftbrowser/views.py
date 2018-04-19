@@ -196,9 +196,9 @@ def getcloud(request):
     elif 'aws' in url:
         cloud = "AWS"
     elif 'gce' in url:
-        cloud = "Google Cloud"
+        cloud = "Private Cloud"
     else:
-        cloud = "Private"
+        cloud = "Private Cloud"
     return cloud
 
 
