@@ -4,6 +4,7 @@ if [ -e host.config ]
 then
 
     source host.config
+    pip install pip==9.0.3
     pip install django==1.09
     pip install django-swiftbrowser
     alias cp=cp
