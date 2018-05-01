@@ -7,11 +7,11 @@
                 {% if session.cloud == "AWS" %}
                     <img src="{{STATIC_URL}}images/AWS+CNS.png" style="height:110px;"/>
                 {% elif session.cloud == "Google Cloud" %}
-                    <a class="brand" href="{% url "containerview" %}"><img src="{{STATIC_URL}}images/rh-trans.png" style="height:42px;"> Red Hat Container Native Storage running on {{session.cloud}}  <img src="{{STATIC_URL}}images/osp-trans.png" style="height:42px;"> </a>
+                    <img src="{{STATIC_URL}}images/Private+CNS.png" style="height:110px;"/>
                 {% elif session.cloud == "Azure" %}
                     <img src="{{STATIC_URL}}images/AZURE+CNS.png" style="height:110px;"/>
                 {% else %}
-                    <a class="brand" href="{% url "containerview" %}"><img src="{{STATIC_URL}}images/rh-trans.png" style="height:42px;"> Red Hat Container Native Storage running on {{session.cloud}}  <img src="{{STATIC_URL}}images/osp-trans.png" style="height:42px;"> </a>
+                    <img src="{{STATIC_URL}}images/Private+CNS.png" style="height:110px;"/>
                 {% endif %}
             </div>
         </div>
