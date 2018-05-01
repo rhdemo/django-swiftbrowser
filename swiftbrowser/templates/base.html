@@ -13,31 +13,6 @@
                 {% else %}
                     <a class="brand" href="{% url "containerview" %}"><img src="{{STATIC_URL}}images/rh-trans.png" style="height:42px;"> Red Hat Container Native Storage running on {{session.cloud}}  <img src="{{STATIC_URL}}images/osp-trans.png" style="height:42px;"> </a>
                 {% endif %}
-                <ul class="nav pull-right">
-                    {% if session.username %}
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <strong class="hidden-phone">{{session.username}}</strong>
-                                <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                {% block menu_addons %}{% endblock %}
-                                <li>
-                                    <a href="{% url "login" %}">
-                                    <i class="icon-remove-sign"></i>
-                                    {% trans 'Logout' %}
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    {% else %}
-                        <li>
-                            <a href="{% url "login" %}">
-                                <strong> {% trans 'Login' %}</strong>
-                            </a>
-                            </li>
-                    {% endif %}
-                    </ul>
             </div>
         </div>
     </div>
