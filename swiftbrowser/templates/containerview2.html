@@ -31,14 +31,10 @@
         {% endfor %}
         <tr>
             <td colspan="3">
-                {% if session.cloud == "AWS" %}
-                    <img src="{{STATIC_URL}}images/cloud-AWS-active.png" style="height:310px;" usemap="#cloudmap">
-                {% elif session.cloud == "Google Cloud" %}
-                    <img src="{{STATIC_URL}}images/cloud-RHPC-active.png" style="height:310px;" usemap="#cloudmap">
-                {% elif session.cloud == "Azure" %}
-                    <img src="{{STATIC_URL}}images/cloud-Azure-active.png" style="height:310px;" usemap="#cloudmap">
+                {% if session.cloud == "Azure" %}
+                    <img src="{{STATIC_URL}}images/cloud-Azure-active-alt.png" style="height:310px;" usemap="#cloudmap">
                 {% else %}
-                    <img src="{{STATIC_URL}}images/cloud-RHPC-active.png" style="height:310px;" usemap="#cloudmap">
+                    <img src="{{STATIC_URL}}images/cloud-RHPC-active-alt.png" style="height:310px;" usemap="#cloudmap">
                 {% endif %}
             </td>
         </tr>
@@ -48,9 +44,8 @@
         </table>
 
         <map name="cloudmap">
-            <area shape="rect" coords="5,3,326,208" href="http://azr-storage1.southcentralus.cloudapp.azure.com/cloudview/All/" />
-            <area shape="rect" coords="329,2,675,208" href="http://storage-aws1.sysdeseng.com/cloudview/All/" />
-            <area shape="rect" coords="681,2,998,208" href="http://storage1.redhatkeynote.com/cloudview/All/" />
+            <area shape="rect" coords="0,0,500,208" href="http://azr-storage1.southcentralus.cloudapp.azure.com/cloudview/All/" />
+            <area shape="rect" coords="500,0,998,208" href="http://storage1.redhatkeynote.com/cloudview/All/" />
         </map>
     </div>
     {% endblock %}
