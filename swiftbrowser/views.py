@@ -65,9 +65,9 @@ def containerview(request):
     try:
         account_stat, containers = client.get_account(storage_url, auth_token)
     except client.ClientException as exc:
+        account_stat = {}
+        containers = []
         if exc.http_status == 403:
-            account_stat = {}
-            containers = []
             base_url = get_base_url(request)
             msg = 'Container listing failed. You can manually choose a known '
             msg += 'container by appending the name to the URL, for example: '
@@ -88,6 +88,44 @@ def containerview(request):
     account_stat = replace_hyphens(account_stat)
 
     return render_to_response('containerview.html', {
+        'account_stat': account_stat,
+        'containers': containers,
+        'session': request.session,
+    }, context_instance=RequestContext(request))
+
+def containerview2(request):
+    """ Returns a list of all containers in current account. """
+
+    storage_url = request.session.get('storage_url', settings.STORAGE_URL)
+    auth_token = request.session.get('auth_token', 'demo')
+    request.session['cloud'] = getcloud(request)
+
+    try:
+        account_stat, containers = client.get_account(storage_url, auth_token)
+    except client.ClientException as exc:
+        account_stat = {}
+        containers = []
+        if exc.http_status == 403:
+            base_url = get_base_url(request)
+            msg = 'Container listing failed. You can manually choose a known '
+            msg += 'container by appending the name to the URL, for example: '
+            msg += '<a href="%s/objects/containername">' % base_url
+            msg += '%s/objects/containername</a>' % base_url
+            messages.add_message(request, messages.ERROR, msg)
+        elif exc.http_status == 302:
+            msg = 'Bucket listing failed with 302. \n '
+            msg += exc.msg
+            messages.add_message(request, messages.ERROR, msg)
+        else:
+            msg = 'Bucket listing failed with %s. ' % exc.http_status
+            msg += 'A 503 error could mean volume is not set.\n '
+            msg += exc.msg
+            messages.add_message(request, messages.ERROR, msg)
+            return redirect(login)
+
+    account_stat = replace_hyphens(account_stat)
+
+    return render_to_response('containerview2.html', {
         'account_stat': account_stat,
         'containers': containers,
         'session': request.session,

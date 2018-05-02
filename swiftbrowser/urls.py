@@ -10,6 +10,7 @@ urlpatterns = patterns(
     'swiftbrowser.views',
     url(r'^login/$', login, name="login"),
     url(r'^clouds/$', clouds, name="clouds"),
+    url(r'^alt/$', containerview2, name="containerview2"),
     url(r'^$', containerview, name="containerview"),
     url(r'^public/(?P<account>.+?)/(?P<container>.+?)/(?P<prefix>(.+)+)?$',
         public_objectview, name="public_objectview"),
