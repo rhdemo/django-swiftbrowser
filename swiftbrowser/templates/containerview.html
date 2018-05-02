@@ -32,13 +32,13 @@
         <tr>
             <td colspan="3">
                 {% if session.cloud == "AWS" %}
-                    <img src="{{STATIC_URL}}images/cloud-AWS-active.png" style="height:310px;" usemap="#cloudmap">
+                    <img src="{{STATIC_URL}}images/cloud-AWS-active.png" style="height:280px;padding-top:70px; display:block; margin-left:auto; margin-right:auto;" usemap="#cloudmap">
                 {% elif session.cloud == "Google Cloud" %}
-                    <img src="{{STATIC_URL}}images/cloud-RHPC-active.png" style="height:310px;" usemap="#cloudmap">
+                    <img src="{{STATIC_URL}}images/cloud-RHPC-active.png" style="height:280px;padding-top:70px; display:block; margin-left:auto; margin-right:auto;" usemap="#cloudmap">
                 {% elif session.cloud == "Azure" %}
-                    <img src="{{STATIC_URL}}images/cloud-Azure-active.png" style="height:310px;" usemap="#cloudmap">
+                    <img src="{{STATIC_URL}}images/cloud-Azure-active.png" style="height:280px;padding-top:70px; display:block; margin-left:auto; margin-right:auto;" usemap="#cloudmap">
                 {% else %}
-                    <img src="{{STATIC_URL}}images/cloud-RHPC-active.png" style="height:310px;" usemap="#cloudmap">
+                    <img src="{{STATIC_URL}}images/cloud-RHPC-active.png" style="height:280px;padding-top:70px; display:block; margin-left:auto; margin-right:auto;" usemap="#cloudmap">
                 {% endif %}
             </td>
         </tr>
