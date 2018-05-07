@@ -14,3 +14,13 @@
 a {
     color: black !important;
 }
+
+body {
+    font-size: 22px !important;
+
+}
+
+.table th, .table td {
+    line-height: 25px !important;
+    text-align: left;
+}
