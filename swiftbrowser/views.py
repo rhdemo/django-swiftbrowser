@@ -254,7 +254,7 @@ def cloudview(request, cloud, prefix=None):
     newkey = u"{key}".format(key='bucket')
     for bucket in arrayOfBuckets:
         try:
-            meta, objects1 = client.get_container(storage_url, auth_token, bucket, delimiter='/', prefix=prefix)
+            meta, objects1 = client.get_container(storage_url, auth_token, bucket, delimiter='/', prefix=prefix, marker="Amazom", end_marker="Privatf")
             for entry in objects1:
                 value = u"{value}".format( value=bucket)
                 entry.update({newkey:value})
