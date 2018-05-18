@@ -14,6 +14,8 @@ then
     cp -r ./swiftbrowser/static/ /usr/lib/python2.7/site-packages/swiftbrowser/.
     sed -i '50s/.*/SWIFT_HOST="'$SWIFT_HOST'"/' /usr/lib/python2.7/site-packages/swiftbrowser/settings.py
     sed -i '49s/.*/SWIFT_VOLUME="'$SWIFT_VOLUME'"/' /usr/lib/python2.7/site-packages/swiftbrowser/settings.py
+    sed -i '71s/.*/SHOW_IMAGEMAP="'$SHOW_IMAGEMAP'"/' /usr/lib/python2.7/site-packages/swiftbrowser/settings.py
+    sed -i '37s/.*/SWIFT_CLOUD="'$SWIFT_CLOUD'"/' /usr/lib/python2.7/site-packages/swiftbrowser/settings.py
     cp storageui.service /etc/systemd/system/.
     chmod 664 /etc/systemd/system/storageui.service
     systemctl daemon-reload

@@ -33,7 +33,7 @@ INSTALLED_APPS = (
 )
 
 
-#Update values below to correct URL
+#DO NOT MOVE these settings, script changes these lines
 SWIFT_CLOUD='Azure'
 #SWIFT_CLOUD='AWS'
 #SWIFT_CLOUD='Google Cloud'
@@ -45,7 +45,7 @@ AZURE_BUCKETS='bucket7,bucket8,bucket9'
 GCE_BUCKETS='bucket4,bucket5,bucket6'
 PRIVATE_BUCKETS='bucket10,bucket11,bucket12'
 TEST_BUCKETS='test1,test2,test3'
-
+#DO NOT MOVE these settings, script changes these lines
 SWIFT_VOLUME='gv0'
 SWIFT_HOST='localhost'
 SWIFT_PORT='8080'
