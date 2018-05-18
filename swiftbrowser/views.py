@@ -228,14 +228,14 @@ def cloud_to_bucket(argument):
 def getcloud(request):
 
     url = socket.gethostname()
-    if 'azr' in url:
+    if 'azr' in url or settings.SWIFT_CLOUD == 'Azure':
         cloud = "Azure"
-    elif 'ec2' in url:
+    elif 'ec2' in url or settings.SWIFT_CLOUD == 'AWS':
         cloud = "AWS"
-    elif 'aws' in url:
+    elif 'aws' in url or settings.SWIFT_CLOUD == 'AWS':
         cloud = "AWS"
-    elif 'gce' in url:
-        cloud = "Private Cloud"
+    elif 'gce' in url or settings.SWIFT_CLOUD == 'GCE':
+        cloud = "Google Cloud"
     else:
         cloud = "Private Cloud"
     return cloud
