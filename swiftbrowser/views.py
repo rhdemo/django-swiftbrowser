@@ -61,6 +61,7 @@ def containerview(request):
     storage_url = request.session.get('storage_url', settings.STORAGE_URL)
     auth_token = request.session.get('auth_token', 'demo')
     request.session['cloud'] = getcloud(request)
+    request.session['showimagemap'] = settings.SHOW_IMAGEMAP
 
     try:
         account_stat, containers = client.get_account(storage_url, auth_token)

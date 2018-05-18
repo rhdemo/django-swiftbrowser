@@ -29,6 +29,7 @@
         </tr> 
  
         {% endfor %}
+        {% if session.showimagemap == True %}
         <tr>
             <td colspan="3">
                 {% if session.cloud == "AWS" %}
@@ -42,7 +43,7 @@
                 {% endif %}
             </td>
         </tr>
-
+        {% endif %}
         </tbody>
 
         </table>

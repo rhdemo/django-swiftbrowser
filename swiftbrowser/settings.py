@@ -68,3 +68,4 @@ STATICILES_FINDERS = (
 STATIC_URL = '/static/'
 STATIC_ROOT = '/usr/lib/python2.7/site-packages/swiftbrowser/static/'
 
+SHOW_IMAGEMAP=True
