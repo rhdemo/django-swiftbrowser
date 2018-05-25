@@ -7,7 +7,9 @@ After=network.target
 
 [Service]
 ExecStart=/bin/swift-init main start
-Type=simple
+ExecStop=/bin/swift-init main stop
+ExecReload=/bin/swift-init main reload
+Type=oneshot
 Restart=always
 
 [Install]
@@ -16,3 +18,5 @@ WantedBy=default.target
 #systemctl daemon-reload
 #systemctl start swiftproxy.service
 #systemctl enable swiftproxy
+
+#cp swiftproxy.service /etc/systemd/system/.;chmod 664 /etc/systemd/system/swiftproxy.service;systemctl daemon-reload;systemctl start swiftproxy.service
