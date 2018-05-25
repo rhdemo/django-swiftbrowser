@@ -1,4 +1,4 @@
-#cp storage.service /etc/systemd/system/.
+#cp swiftproxy.service /etc/systemd/system/.
 #chmod 664 /etc/systemd/system/swiftproxy.service
 
 [Unit]
@@ -6,7 +6,7 @@ Description=Systemd script for the Swift Proxy service that allows for object st
 After=network.target
 
 [Service]
-ExecStart=swift-init main start
+ExecStart=/bin/swift-init main start
 Type=simple
 Restart=always
 
