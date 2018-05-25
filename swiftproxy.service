@@ -9,8 +9,9 @@ After=network.target
 ExecStart=/bin/swift-init main start
 ExecStop=/bin/swift-init main stop
 ExecReload=/bin/swift-init main reload
-Type=oneshot
+Type=forking
 Restart=always
+PIDFile=/var/run/swiftproxy.pid
 
 [Install]
 WantedBy=default.target
