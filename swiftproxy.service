@@ -11,7 +11,6 @@ ExecStop=/bin/swift-init main stop
 ExecReload=/bin/swift-init main reload
 Type=forking
 Restart=always
-PIDFile=/home/root/swiftproxy.pid
 
 [Install]
 WantedBy=default.target
